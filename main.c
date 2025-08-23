@@ -53,6 +53,9 @@ int ReadNum(double* const num) {
         c = getchar();
     }
     if (c != '-' && (c < '0' || c > '9')) {
+        while (c != '\n') {
+            c = getchar();
+        }
         return -1;
     }
 
@@ -64,6 +67,9 @@ int ReadNum(double* const num) {
     }
 
     if (c < '0' || c > '9') {
+        while (c != '\n') {
+            c = getchar();
+        }
         return -1;
     }
 
@@ -81,6 +87,9 @@ int ReadNum(double* const num) {
     }
 
     if (!isspace(c)) {
+        while (c != '\n') {
+            c = getchar();
+        }
         return -1;
     }
 
