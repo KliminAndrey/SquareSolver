@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
+#include <ctype.h>
 
 const int INF_SOLVES = -1;
 const double EPS = 1e-6;
 const int MAX_INPUT = 100;
 
+int test();
+int testSolve(double a, double b, double c,
+                        int nRootRight, double x1right, double x2right);
 int compareDoubles(const double number1, const double number2);
-int ReadInt(char** input, double* const num);
+int ReadNum(double* const num);
 int GetCoefs(double* const a, double* const b, double* const c);
 int Solve(const double a, const double b, const double c,
                     double* const root1, double* const root2);
@@ -26,53 +30,83 @@ int compareDoubles(const double number1, const double number2) {
         return 0;
     }
 }
+int testSolve(double a, double b, double c,
+                int nRootRight, double x1right, double x2right) {
+    double x1 = 0, x2 = 0;
+    int nRoot = Solve(a, b, c, &x1, &x2);
+    if (!(nRoot = nRootRight && compareDoubles(x1, x1right) && compareDoubles(x2, x2right))) {
+        printf("Fail: Solve(%lf, %lf, %lf, &x1, &x2) -> %d x1 = %lf, x2 = %lf, should be %d, x1 = %lf, x2 = %lf\n", a, b, c, nRoot, x1, x2, nRootRight, x1right, x2right);
+    }
+    return 0;
+}
+int test() {
+    testSolve(1, -5, 6, 2, 2, 3);
 
-int ReadInt(char** input, double* const num) {
-    assert(input != NULL);
+    return 0;
+}
+
+int ReadNum(double* const num) {
     assert(num != NULL);
+
+    int c = getchar();
+    while (isspace(c)) {
+        c = getchar();
+    }
+    if (c != '-' && (c < '0' || c > '9')) {
+        return -1;
+    }
 
     *num = 0;
     int sign = 1;
-    if (**input == '-') {
+    if (c == '-') {
         sign = -1;
-        (*input)++;
+        c = getchar();
     }
-    if (**input < '0' || **input > '9') {
+
+    if (c < '0' || c > '9') {
         return -1;
     }
-    for (; **input >= '0' && **input <= '9';(*input)++) {
-        *num = *num * 10 + (**input - '0');
+
+    while (c >= '0' && c <= '9') {
+        *num = *num * 10 + (c - '0');
+        c = getchar();
     }
+
+    if (c == '.' || c == ',') {
+        c = getchar();
+        while (c >= '0' && c <= '9') {
+            *num += ((double)(c - '0')) / 10;
+            c = getchar();
+        }
+    }
+
+    if (!isspace(c)) {
+        return -1;
+    }
+
     *num = *num * sign;
-    if (**input == ' ') {
-        (*input)++;
-        return 0;
-    }
-    if (**input == '\n') {
-        return 1;
-    }
-    return -1;
+
+    return 0;
 }
 
 int GetCoefs(double* const a, double* const b, double* const c) {
-    char str[MAX_INPUT]; // char *input;
-    char *input = str;
-    fgets(input, MAX_INPUT, stdin);
+    assert(a != NULL);
+    assert(b != NULL);
+    assert(c != NULL);
 
-
-    int status = ReadInt(&input, a);
+    int status = ReadNum(a);
     if (status != 0) {
         return -1;
     }
 
-    status = ReadInt(&input, b);
+    status = ReadNum(b);
     if (status != 0) {
         return -1;
     }
 
-    status = ReadInt(&input, c);
+    status = ReadNum(c);
 
-    if (status != 1) {
+    if (status != 0) {
         return -1;
     }
 
@@ -147,6 +181,7 @@ int printAnswer(const int RootCount, const double root1, const double root2) {
 */
 
 int main() {
+    test();
     printf("Введите коэффициенты уравнения ax^2 + bx + c = 0\na b c:\n");
 
     double a = 0, b = 0, c = 0;
@@ -167,3 +202,4 @@ int main() {
 
     return 0;
 }
+//  считывание даблов
