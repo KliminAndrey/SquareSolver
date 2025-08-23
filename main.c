@@ -8,6 +8,8 @@ const double EPS = 1e-6;
 const int MAX_INPUT = 100;
 
 int test();
+double getFracPart(int* c);
+int goStrEnd(int c);
 int testSolve(double a, double b, double c,
                         int nRootRight, double x1right, double x2right);
 int compareDoubles(const double number1, const double number2);
@@ -44,7 +46,21 @@ int test() {
 
     return 0;
 }
-
+int goStrEnd(int c) {
+    while (c != '\n') {
+        c = getchar();
+    }
+    return 0;
+}
+double getFracPart(int* c) {
+    *c = getchar();
+    double num = 0;
+    while (*c >= '0' && *c <= '9') {
+        num += ((double)(*c - '0')) / 10;
+        *c = getchar();
+    }
+    return num;
+}
 int ReadNum(double* const num) {
     assert(num != NULL);
 
@@ -53,9 +69,7 @@ int ReadNum(double* const num) {
         c = getchar();
     }
     if (c != '-' && (c < '0' || c > '9')) {
-        while (c != '\n') {
-            c = getchar();
-        }
+        goStrEnd(c);
         return -1;
     }
 
@@ -67,9 +81,7 @@ int ReadNum(double* const num) {
     }
 
     if (c < '0' || c > '9') {
-        while (c != '\n') {
-            c = getchar();
-        }
+        goStrEnd(c);
         return -1;
     }
 
@@ -79,17 +91,11 @@ int ReadNum(double* const num) {
     }
 
     if (c == '.' || c == ',') {
-        c = getchar();
-        while (c >= '0' && c <= '9') {
-            *num += ((double)(c - '0')) / 10;
-            c = getchar();
-        }
+        *num += getFracPart(&c);
     }
 
     if (!isspace(c)) {
-        while (c != '\n') {
-            c = getchar();
-        }
+        goStrEnd(c);
         return -1;
     }
 
