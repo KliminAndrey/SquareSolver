@@ -2,24 +2,22 @@
 #include <math.h>
 #include <assert.h>
 #include <ctype.h>
+#include "header.h"
 
 const int INF_SOLVES = -1;
+const int INCORRECT_INPUT = -1;
 const double EPS = 1e-6;
 const int MAX_INPUT = 100;
 
-int test();
 double getFracPart(int* c);
+double getIntPart(int* const c, double* const num);
+int checkMinus(int* const c);
 int goStrEnd(int c);
-int testSolve(double a, double b, double c,
-                        int nRootRight, double x1right, double x2right);
-int compareDoubles(const double number1, const double number2);
-int ReadNum(double* const num);
-int GetCoefs(double* const a, double* const b, double* const c);
-int Solve(const double a, const double b, const double c,
-                    double* const root1, double* const root2);
-int SolveLinear(const double a, const double b,
+int readNum(double* const num);
+int getCoefs(double* const a, double* const b, double* const c);
+int solveLinear(const double a, const double b,
                     double* const root);
-int SolveSquare(const double a, const double b, const double c,
+int solveSquare(const double a, const double b, const double c,
                     double* const root1, double* const root2);
 int printAnswer(const int rootCount,
                     const double root1, const double root2);
@@ -32,115 +30,123 @@ int compareDoubles(const double number1, const double number2) {
         return 0;
     }
 }
-int testSolve(double a, double b, double c,
-                int nRootRight, double x1right, double x2right) {
-    double x1 = 0, x2 = 0;
-    int nRoot = Solve(a, b, c, &x1, &x2);
-    if (!(nRoot = nRootRight && compareDoubles(x1, x1right) && compareDoubles(x2, x2right))) {
-        printf("Fail: Solve(%lf, %lf, %lf, &x1, &x2) -> %d x1 = %lf, x2 = %lf, should be %d, x1 = %lf, x2 = %lf\n", a, b, c, nRoot, x1, x2, nRootRight, x1right, x2right);
-    }
-    return 0;
-}
-int test() {
-    testSolve(1, -5, 6, 2, 2, 3);
 
-    return 0;
-}
 int goStrEnd(int c) {
     while (c != '\n') {
         c = getchar();
     }
     return 0;
 }
-double getFracPart(int* c) {
+double getFracPart(int* const c, double* const num) {
+    assert(c != NULL);
+
+    if (*c != '.' && *c != ',') {
+        return 0;
+    }
+
     *c = getchar();
-    double num = 0;
+    double fracPart = 0;
     while (*c >= '0' && *c <= '9') {
-        num += ((double)(*c - '0')) / 10;
+        fracPart = fracPart * 10 + ((double)(*c - '0'));
         *c = getchar();
     }
-    return num;
+
+    while (fracPart >= 1) {
+        fracPart /= 10;
+    }
+    *num += fracPart;
+    return 0;
 }
-int ReadNum(double* const num) {
+double getIntPart(int* const c, double* const num) {
+    assert(c != NULL);
     assert(num != NULL);
 
-    int c = getchar();
-    while (isspace(c)) {
-        c = getchar();
+    while (*c >= '0' && *c <= '9') {
+        *num = *num * 10 + (*c - '0');
+        *c = getchar();
     }
-    if (c != '-' && (c < '0' || c > '9')) {
-        goStrEnd(c);
+    return 0;
+}
+int checkMinus(int* const c) {
+    assert(c != NULL);
+
+    if (*c == '-') {
+        *c = getchar();
         return -1;
     }
+    return 1;
+}
+int readNum(double* const num) {
+    assert(num != NULL);
 
+    int c = '\0';
     *num = 0;
-    int sign = 1;
-    if (c == '-') {
-        sign = -1;
+
+    do {
         c = getchar();
+    } while (isspace(c));
+
+    if (c != '-' && (c < '0' || c > '9')) {
+        goStrEnd(c);
+        return INCORRECT_INPUT;
     }
+
+    const int sign = checkMinus(&c);
 
     if (c < '0' || c > '9') {
         goStrEnd(c);
-        return -1;
+        return INCORRECT_INPUT;
     }
 
-    while (c >= '0' && c <= '9') {
-        *num = *num * 10 + (c - '0');
-        c = getchar();
-    }
-
-    if (c == '.' || c == ',') {
-        *num += getFracPart(&c);
-    }
+    getIntPart(&c, num);
+    getFracPart(&c, num);
 
     if (!isspace(c)) {
         goStrEnd(c);
-        return -1;
+        return INCORRECT_INPUT;
     }
 
     *num = *num * sign;
 
     return 0;
 }
-
-int GetCoefs(double* const a, double* const b, double* const c) {
+int getCoefs(double* const a, double* const b, double* const c) {
     assert(a != NULL);
     assert(b != NULL);
     assert(c != NULL);
 
-    int status = ReadNum(a);
+    int status = readNum(a);
     if (status != 0) {
-        return -1;
+        return INCORRECT_INPUT;
     }
 
-    status = ReadNum(b);
+    status = readNum(b);
     if (status != 0) {
-        return -1;
+        return INCORRECT_INPUT;
     }
 
-    status = ReadNum(c);
+    status = readNum(c);
 
     if (status != 0) {
-        return -1;
+        return INCORRECT_INPUT;
     }
 
     return 0;
 }
 
-int Solve(const double a, const double b, const double c,
+int solve(const double a, const double b, const double c,
                   double* const root1, double* const root2) {
     assert(root1 != NULL);
     assert(root2 != NULL);
 
     if (compareDoubles(a, 0)) { // проверяем степень уравнения // int solveLinear()
-        return SolveLinear(b, c, root1);
+        return solveLinear(b, c, root1);
     } else {
-        return SolveSquare(a, b, c, root1, root2);
+        return solveSquare(a, b, c, root1, root2);
     }
 }
 
-int SolveLinear(const double a, const double b, double* const root) {
+int solveLinear(const double a, const double b, double* const root) {
     assert(root != NULL);
 
     if (compareDoubles(a, 0) && compareDoubles(b, 0)) { // уравнение вида 0 * x = 0
@@ -153,7 +159,7 @@ int SolveLinear(const double a, const double b, double* const root) {
     }
 }
 
-int SolveSquare(const double a, const double b, const double c,
+int solveSquare(const double a, const double b, const double c,
                     double* const root1, double* const root2) {
     assert(root1 != NULL);
     assert(root2 != NULL);
@@ -202,15 +208,14 @@ int main() {
     double a = 0, b = 0, c = 0;
 
 
-    int status = GetCoefs(&a, &b, &c);
-
-    while (status != 0) {
+    int status = getCoefs(&a, &b, &c);
+    while (status == INCORRECT_INPUT) {
         printf("Неправильный формат, укажите 3 числа через пробел:\n");
-        status = GetCoefs(&a, &b, &c);
+        status = getCoefs(&a, &b, &c);
     }
 
     double root1 = 0, root2 = 0;
-    const int RootCount = SolveSquare(a, b, c, &root1, &root2);
+    const int RootCount = solveSquare(a, b, c, &root1, &root2);
 
     printAnswer(RootCount, root1, root2);
 
