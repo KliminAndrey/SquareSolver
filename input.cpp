@@ -1,6 +1,17 @@
-#include "header.h"
+#include <stdio.h>
+#include <assert.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include "input.h"
 
-int checkChar() {
+static int checkChar();
+static int goStrEnd(int c);
+static double getFracPart(int* const c, double* const num);
+static double getIntPart(int* const c, double* const num);
+static int checkMinus(int* const c);
+static void skipSpaces(int* const c);
+
+static int checkChar() {
     const int c = getchar();
     if (c == EOF) {
         printf("Завершение программы\n");
@@ -8,14 +19,15 @@ int checkChar() {
     }
     return c;
 }
-int goStrEnd(int c) {
+static int goStrEnd(int c) {
     while (c != '\n') {
         c = checkChar();
     }
     return 0;
 }
-double getFracPart(int* const c, double* const num) {
+static double getFracPart(int* const c, double* const num) {
     assert(c != NULL);
+    assert(num != NULL);
 
     if (*c != '.' && *c != ',') {
         return 0;
@@ -34,7 +46,7 @@ double getFracPart(int* const c, double* const num) {
     *num += fracPart;
     return 0;
 }
-double getIntPart(int* const c, double* const num) {
+static double getIntPart(int* const c, double* const num) {
     assert(c != NULL);
     assert(num != NULL);
 
@@ -44,7 +56,7 @@ double getIntPart(int* const c, double* const num) {
     }
     return 0;
 }
-int checkMinus(int* const c) {
+static int checkMinus(int* const c) {
     assert(c != NULL);
 
     if (*c == '-') {
@@ -53,23 +65,26 @@ int checkMinus(int* const c) {
     }
     return 1;
 }
+static void skipSpaces(int* const c) {
+    assert(c != NULL);
+
+    do {
+        *c = checkChar();
+    } while (isspace(*c));
+}
 int readNum(double* const num) {
     assert(num != NULL);
 
     int c = '\0';
     *num = 0;
 
-    do {
-        c = checkChar();
-    } while (isspace(c));
-
+    skipSpaces(&c);
     if (c != '-' && (c < '0' || c > '9')) {
         goStrEnd(c);
         return INCORRECT_INPUT;
     }
 
     const int sign = checkMinus(&c);
-
     if (c < '0' || c > '9') {
         goStrEnd(c);
         return INCORRECT_INPUT;
@@ -84,6 +99,5 @@ int readNum(double* const num) {
     }
 
     *num = *num * sign;
-
     return 0;
 }

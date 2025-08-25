@@ -1,6 +1,11 @@
 #include <stdio.h>
-#include "header.h"
 
+#include "tools.h"
+#include "solve.h"
+
+int testSolve(const double a, const double b, const double c,
+                const int nRootRight, const double x1right, const double x2right);
+int test();
 
 int testSolve(const double a, const double b, const double c,
                 const int nRootRight, const double x1right, const double x2right) {

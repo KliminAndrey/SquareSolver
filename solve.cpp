@@ -1,4 +1,14 @@
-#include "header.h"
+#include <stdio.h>
+#include <math.h>
+#include <assert.h>
+
+#include "solve.h"
+
+#include "tools.h"
+
+static int solveLinear(const double a, const double b, double* const root);
+static int solveSquare(const double a, const double b, const double c,
+                    double* const root1, double* const root2);
 
 int solve(const double a, const double b, const double c,
                   double* const root1, double* const root2) {
@@ -11,8 +21,7 @@ int solve(const double a, const double b, const double c,
         return solveSquare(a, b, c, root1, root2);
     }
 }
-
-int solveLinear(const double a, const double b, double* const root) {
+static int solveLinear(const double a, const double b, double* const root) {
     assert(root != NULL);
 
     if (compareDoubles(a, 0) && compareDoubles(b, 0)) { // уравнение вида 0 * x = 0
@@ -24,8 +33,7 @@ int solveLinear(const double a, const double b, double* const root) {
         return 1;
     }
 }
-
-int solveSquare(const double a, const double b, const double c,
+static int solveSquare(const double a, const double b, const double c,
                     double* const root1, double* const root2) {
     assert(root1 != NULL);
     assert(root2 != NULL);

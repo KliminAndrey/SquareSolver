@@ -2,14 +2,16 @@
 #include <math.h>
 #include <assert.h>
 #include <ctype.h>
-#include "header.h"
 
+#include "input.h"
+#include "tools.h"
+#include "solve.h"
 
-int getCoefs(double* const a, double* const b, double* const c);
-int printAnswer(const int rootCount,
+static int getCoefs(double* const a, double* const b, double* const c);
+static int printAnswer(const int rootCount,
                     const double root1, const double root2);
 
-int getCoefs(double* const a, double* const b, double* const c) {
+static int getCoefs(double* const a, double* const b, double* const c) {
     assert(a != NULL);
     assert(b != NULL);
     assert(c != NULL);
@@ -25,16 +27,12 @@ int getCoefs(double* const a, double* const b, double* const c) {
     }
 
     status = readNum(c);
-
     if (status != 0) {
         return INCORRECT_INPUT;
     }
-
     return 0;
 }
-
-
-int printAnswer(const int RootCount, const double root1, const double root2) {
+static int printAnswer(const int RootCount, const double root1, const double root2) {
     if (RootCount == 0) {
         printf("Уравнение не имеет действительных решений\n");
         return 0;
@@ -62,7 +60,7 @@ int main() {
     }
 
     double root1 = 0, root2 = 0;
-    const int RootCount = solveSquare(a, b, c, &root1, &root2);
+    const int RootCount = solve(a, b, c, &root1, &root2);
 
     printAnswer(RootCount, root1, root2);
     return 0;
