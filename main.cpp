@@ -17,17 +17,17 @@ static int getCoefs(double* const a, double* const b, double* const c) {
     assert(c != NULL);
 
     int status = readNum(a);
-    if (status != 0) {
+    if (status == INCORRECT_INPUT) {
         return INCORRECT_INPUT;
     }
 
     status = readNum(b);
-    if (status != 0) {
+    if (status == INCORRECT_INPUT) {
         return INCORRECT_INPUT;
     }
 
     status = readNum(c);
-    if (status != 0) {
+    if (status == INCORRECT_INPUT) {
         return INCORRECT_INPUT;
     }
     return 0;
@@ -48,7 +48,7 @@ static int printAnswer(const int RootCount, const double root1, const double roo
     }
     return -1;
 }
-int main() {
+void execute() {
     printf("Введите коэффициенты уравнения ax^2 + bx + c = 0\na b c:\n");
 
     double a = 0, b = 0, c = 0;
@@ -63,6 +63,12 @@ int main() {
     const int RootCount = solve(a, b, c, &root1, &root2);
 
     printAnswer(RootCount, root1, root2);
+}
+int main() {
+    while (1) {
+        execute();
+    }
     return 0;
 }
 
+// enum exit struct

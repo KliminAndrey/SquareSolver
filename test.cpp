@@ -3,6 +3,10 @@
 #include "tools.h"
 #include "solve.h"
 
+#define RED     "\033[1;31m"
+#define GREEN   "\033[1;32m"
+#define RESET   "\033[0m"
+
 int testSolve(const double a, const double b, const double c,
                 const int nRootRight, const double x1right, const double x2right);
 int test();
@@ -12,7 +16,9 @@ int testSolve(const double a, const double b, const double c,
     double x1 = 0, x2 = 0;
     const int nRoot = solve(a, b, c, &x1, &x2);
     if (!(nRoot == nRootRight && compareDoubles(x1, x1right) && compareDoubles(x2, x2right))) {
+        printf("%s", RED);
         printf("Fail: Solve(%lf, %lf, %lf, &x1, &x2) -> %d x1 = %lf, x2 = %lf, should be %d, x1 = %lf, x2 = %lf\n", a, b, c, nRoot, x1, x2, nRootRight, x1right, x2right);
+        printf("%s", RESET);
         return 0;
     }
     return 1;
