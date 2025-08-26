@@ -3,7 +3,14 @@
 
 const int INF_SOLVES = -1;
 
+struct eqCoef{
+    double a, b, c;
+};
+struct eqRoots{
+    int nRoots;
+    double root1, root2;
+};
 
-int solve(const double a, const double b, const double c,
-                    double* const root1, double* const root2);
+void solve(const eqCoef* const coef,
+                eqRoots* const roots);
 #endif

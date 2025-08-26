@@ -10,6 +10,7 @@
 static int getCoefs(double* const a, double* const b, double* const c);
 static int printAnswer(const int rootCount,
                     const double root1, const double root2);
+void execute();
 
 static int getCoefs(double* const a, double* const b, double* const c) {
     assert(a != NULL);
@@ -32,17 +33,17 @@ static int getCoefs(double* const a, double* const b, double* const c) {
     }
     return 0;
 }
-static int printAnswer(const int RootCount, const double root1, const double root2) {
-    if (RootCount == 0) {
+static int printAnswer(const eqRoots* const roots) {
+    if (roots->nRoots == 0) {
         printf("Уравнение не имеет действительных решений\n");
         return 0;
-    } else if (RootCount == 1) {
-        printf("Единственное действительное решение уравнения: %lf\n", root1);
+    } else if (roots->nRoots == 1) {
+        printf("Единственное действительное решение уравнения: %lf\n", roots->root1);
         return 0;
-    } else if (RootCount == 2) {
-        printf("Действительные решения уравнения: \n%.4lf\n%.4lf\n", root1, root2);
+    } else if (roots->nRoots == 2) {
+        printf("Действительные решения уравнения: \n%.4lf\n%.4lf\n", roots->root1, roots->root2);
         return 0;
-    } else if (RootCount == INF_SOLVES) {
+    } else if (roots->nRoots == INF_SOLVES) {
         printf("Решение уравнения - множество действительных чисел\n");
         return 0;
     }
@@ -51,18 +52,17 @@ static int printAnswer(const int RootCount, const double root1, const double roo
 void execute() {
     printf("Введите коэффициенты уравнения ax^2 + bx + c = 0\na b c:\n");
 
-    double a = 0, b = 0, c = 0;
-
-    int status = getCoefs(&a, &b, &c);
+    eqCoef coef = {};
+    int status = getCoefs(&(coef.a), &(coef.b), &(coef.c));
     while (status == INCORRECT_INPUT) {
         printf("Неправильный формат, укажите 3 числа через пробел:\n");
-        status = getCoefs(&a, &b, &c);
+        status = getCoefs(&(coef.a), &(coef.b), &(coef.c));
     }
 
-    double root1 = 0, root2 = 0;
-    const int RootCount = solve(a, b, c, &root1, &root2);
+    eqRoots roots = {};
+    solve(&coef, &roots);
 
-    printAnswer(RootCount, root1, root2);
+    printAnswer(&roots);
 }
 int main() {
     while (1) {

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "input.h"
 
+
 static int checkChar();
 static int goStrEnd(int c);
 static double getFracPart(int* const c, double* const num);

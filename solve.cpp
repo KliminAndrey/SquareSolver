@@ -6,48 +6,49 @@
 
 #include "tools.h"
 
-static int solveLinear(const double a, const double b, double* const root);
-static int solveSquare(const double a, const double b, const double c,
-                    double* const root1, double* const root2);
+static void solveLinear(const double a, const double b, eqRoots* const roots);
+static void solveSquare(const eqCoef* const coef,
+                eqRoots* const roots);
 
-int solve(const double a, const double b, const double c,
-                  double* const root1, double* const root2) {
-    assert(root1 != NULL);
-    assert(root2 != NULL);
 
-    if (compareDoubles(a, 0)) { // проверяем степень уравнения // int solveLinear()
-        return solveLinear(b, c, root1);
+void solve(const eqCoef* const coef,
+                eqRoots* const roots) {
+    assert(coef != NULL);
+    assert(roots != NULL);
+
+    if (compareDoubles(coef->a, 0)) { // проверяем степень уравнения // int solveLinear()
+        solveLinear(coef->b, coef->c, roots);
     } else {
-        return solveSquare(a, b, c, root1, root2);
+        solveSquare(coef, roots);
     }
 }
-static int solveLinear(const double a, const double b, double* const root) {
-    assert(root != NULL);
+static void solveLinear(const double a, const double b, eqRoots* const roots) {
+    assert(roots != NULL);
+    roots->nRoots = 1;
 
-    if (compareDoubles(a, 0) && compareDoubles(b, 0)) { // уравнение вида 0 * x = 0
-        return INF_SOLVES;
-    } else if (compareDoubles(a, 0)) {
-        return 0;
+    if (compareDoubles(a, 0)) {
+        roots->nRoots = 0;
+    } if (compareDoubles(a, 0) && compareDoubles(b, 0)) { // уравнение вида 0 * x = 0
+        roots->nRoots = INF_SOLVES;
     } else {
-        *root = -b / a;
-        return 1;
+        roots->nRoots = 1;
+        roots->root1 = -b / a;
     }
 }
-static int solveSquare(const double a, const double b, const double c,
-                    double* const root1, double* const root2) {
-    assert(root1 != NULL);
-    assert(root2 != NULL);
+static void solveSquare(const eqCoef* const coef,
+                eqRoots* const roots) {
+    assert(coef != NULL);
+    assert(roots != NULL);
 
-    const double discriminant = b * b - 4 * a * c;
-    printf("%lf", discriminant);
+    const double discriminant = coef->b * coef->b - 4 * coef->a * coef->c;
     if (discriminant < 0) {
-        return 0;
+        roots->nRoots = 0;
     } else if (compareDoubles(discriminant, 0)) {
-        *root1 = -b / (2 * a);
-        return 1;
+        roots->nRoots = 1;
+        roots->root1 = -coef->b / (2 * coef->a);
     } else {
-        *root1 = (-b - sqrt(discriminant)) / (2 * a);
-        *root2 = (-b + sqrt(discriminant)) / (2 * a);
-        return 2;
+        roots->nRoots = 2;
+        roots->root1 = (-coef->b - sqrt(discriminant)) / (2 * coef->a);
+        roots->root2 = (-coef->b + sqrt(discriminant)) / (2 * coef->a);
     }
 }
