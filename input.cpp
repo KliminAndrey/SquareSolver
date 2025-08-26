@@ -7,26 +7,30 @@
 
 static int checkChar();
 static int goStrEnd(int c);
-static double getFracPart(int* const c, double* const num);
-static double getIntPart(int* const c, double* const num);
+static int getFracPart(int* const c, double* const num);
+static int getIntPart(int* const c, double* const num);
 static int checkMinus(int* const c);
-static void skipSpaces(int* const c);
+static int skipSpaces(int* const c);
 
 static int checkChar() {
     const int c = getchar();
     if (c == EOF) {
         printf("Завершение программы\n");
-        exit(0);
+        return EOF;
     }
     return c;
 }
+
 static int goStrEnd(int c) {
     while (c != '\n') {
-        c = checkChar();
+        if ((c = checkChar()) == EOF) {
+            return EOF;
+        }
     }
     return 0;
 }
-static double getFracPart(int* const c, double* const num) {
+
+static int getFracPart(int* const c, double* const num) {
     assert(c != NULL);
     assert(num != NULL);
 
@@ -34,11 +38,23 @@ static double getFracPart(int* const c, double* const num) {
         return 0;
     }
 
-    *c = checkChar();
+    if ((*c = checkChar()) == EOF) {
+        return EOF;
+    }
     double fracPart = 0;
+
+    int pow = 1;
     while (*c >= '0' && *c <= '9') {
-        fracPart = fracPart * 10 + ((double)(*c - '0'));
-        *c = checkChar();
+        double newNum = (double)(*c - '0');
+        for (int i = 0; i < pow; i++) {
+            newNum /= 10;
+        }
+        pow += 1;
+
+        fracPart += newNum;
+        if ((*c = checkChar()) == EOF) {
+            return EOF;
+        }
     }
 
     while (fracPart >= 1) {
@@ -47,58 +63,90 @@ static double getFracPart(int* const c, double* const num) {
     *num += fracPart;
     return 0;
 }
-static double getIntPart(int* const c, double* const num) {
+
+static int getIntPart(int* const c, double* const num) {
     assert(c != NULL);
     assert(num != NULL);
 
     while (*c >= '0' && *c <= '9') {
         *num = *num * 10 + (*c - '0');
-        *c = checkChar();
+        if ((*c = checkChar()) == EOF) {
+            return EOF;
+        }
     }
     return 0;
 }
+
 static int checkMinus(int* const c) {
     assert(c != NULL);
 
     if (*c == '-') {
-        *c = checkChar();
+        if ((*c = checkChar()) == EOF) {
+            return EOF;
+        }
         return -1;
     }
     return 1;
 }
-static void skipSpaces(int* const c) {
+
+static int skipSpaces(int* const c) {
     assert(c != NULL);
 
     do {
-        *c = checkChar();
+        if ((*c = checkChar()) == EOF) {
+            return EOF;
+        }
     } while (isspace(*c));
+    return 0;
 }
+
 int readNum(double* const num) {
     assert(num != NULL);
 
     int c = '\0';
     *num = 0;
 
-    skipSpaces(&c);
+    int status = 0;
+    if ((status = skipSpaces(&c)) != 0) {
+            return status;
+    }
+
     if (c != '-' && (c < '0' || c > '9')) {
-        goStrEnd(c);
+        if (goStrEnd(c) != 0) {
+            return EOF;
+        }
         return INCORRECT_INPUT;
     }
 
-    const int sign = checkMinus(&c);
+    const int negative = checkMinus(&c);
+    if (negative == EOF) {
+        return negative;
+    }
+
     if (c < '0' || c > '9') {
-        goStrEnd(c);
+        if (goStrEnd(c) != 0) {
+            return EOF;
+        }
         return INCORRECT_INPUT;
     }
 
-    getIntPart(&c, num);
-    getFracPart(&c, num);
+    if ((status = getIntPart(&c, num)) != 0) {
+        return status;
+    }
+    if ((status = getFracPart(&c, num)) != 0) {
+        return status;
+    }
 
     if (!isspace(c)) {
-        goStrEnd(c);
+        if (goStrEnd(c) != 0) {
+            return EOF;
+        }
         return INCORRECT_INPUT;
     }
 
-    *num = *num * sign;
+    if (negative) {
+        *num = *num * (-1);
+    }
+
     return 0;
 }

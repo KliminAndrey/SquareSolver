@@ -3,7 +3,6 @@
 #include <assert.h>
 
 #include "solve.h"
-
 #include "tools.h"
 
 static void solveLinear(const double a, const double b, eqRoots* const roots);
@@ -22,6 +21,7 @@ void solve(const eqCoef* const coef,
         solveSquare(coef, roots);
     }
 }
+
 static void solveLinear(const double a, const double b, eqRoots* const roots) {
     assert(roots != NULL);
     roots->nRoots = 1;
@@ -35,6 +35,7 @@ static void solveLinear(const double a, const double b, eqRoots* const roots) {
         roots->root1 = -b / a;
     }
 }
+
 static void solveSquare(const eqCoef* const coef,
                 eqRoots* const roots) {
     assert(coef != NULL);

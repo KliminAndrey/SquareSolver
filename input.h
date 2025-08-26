@@ -1,7 +1,10 @@
 #ifndef INPUT
 #define INPUT
 
-const int INCORRECT_INPUT = -1;
+enum status {
+    INCORRECT_INPUT = -1,
+    CONTINUE
+};
 
 
 int readNum(double* const num);
