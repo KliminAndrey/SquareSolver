@@ -49,7 +49,12 @@ static void solveSquare(const eqCoef* const coef,
         roots->root1 = -coef->b / (2 * coef->a);
     } else {
         roots->nRoots = 2;
-        roots->root1 = (-coef->b - sqrt(discriminant)) / (2 * coef->a);
-        roots->root2 = (-coef->b + sqrt(discriminant)) / (2 * coef->a);
+        if (coef->a > 0) {
+            roots->root1 = (-coef->b - sqrt(discriminant)) / (2 * coef->a);
+            roots->root2 = (-coef->b + sqrt(discriminant)) / (2 * coef->a);
+        } else {
+            roots->root1 = (-coef->b + sqrt(discriminant)) / (2 * coef->a);
+            roots->root2 = (-coef->b - sqrt(discriminant)) / (2 * coef->a);
+        }
     }
 }

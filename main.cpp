@@ -2,6 +2,7 @@
 #include <math.h>
 #include <assert.h>
 #include <ctype.h>
+#include <string.h>
 
 #include "input.h"
 #include "tools.h"
@@ -9,17 +10,28 @@
 
 static int getCoefs(double* const a, double* const b, double* const c);
 static int printAnswer(const eqRoots* const roots);
-int execute();
+static int execute();
 
-int main() {
+int main(int argc, char* argv[]) {
+    int nEq = 1000;
+    if (argc >= 3 && strcmp(argv[1], "--file") == 0) {
+        const char* fileName = argv[2];
+        FILE* ptrFile = fopen(fileName, "r");
+        if (ptrFile == NULL) {
+            printf("Файл не найден, используется ввод с клавиатуры\n");
+        } else {
+            nEq = atoi(argv[3]);
+            freopen(fileName, "r", stdin);
+        }
+    }
     int status = CONTINUE;
-    while (status == CONTINUE) {
+    for (int i = 0; i < nEq && status == CONTINUE; i++) {
         status = execute();
     }
     return 0;
 }
 
-int execute() {
+static int execute() {
     printf("Введите коэффициенты уравнения ax^2 + bx + c = 0\na b c:\n");
 
     eqCoef coef = {};
