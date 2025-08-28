@@ -10,10 +10,16 @@
 
 static int getCoefs(double* const a, double* const b, double* const c);
 static int printAnswer(const eqRoots* const roots);
-static int execute();
+static int execute(int inputType);
+
+enum input {
+    KEYBOARD_INPUT,
+    FILE_INPUT
+};
 
 int main(int argc, char* argv[]) {
     int nEq = 1000;
+    int inputType = KEYBOARD_INPUT;
     if (argc >= 3 && strcmp(argv[1], "--file") == 0) {
         const char* fileName = argv[2];
         FILE* ptrFile = fopen(fileName, "r");
@@ -22,23 +28,31 @@ int main(int argc, char* argv[]) {
         } else {
             nEq = atoi(argv[3]);
             freopen(fileName, "r", stdin);
+            inputType = FILE_INPUT;
         }
     }
     int status = CONTINUE;
     for (int i = 0; i < nEq && status == CONTINUE; i++) {
-        status = execute();
+        status = execute(inputType);
     }
     return 0;
 }
 
-static int execute() {
-    printf("Введите коэффициенты уравнения ax^2 + bx + c = 0\na b c:\n");
+static int execute(int inputType) {
+    if (inputType == KEYBOARD_INPUT) {
+        printf("Введите коэффициенты уравнения ax^2 + bx + c = 0\na b c:\n");
+    }
 
     eqCoef coef = {};
     int status = getCoefs(&(coef.a), &(coef.b), &(coef.c));
     if (status == EOF) {
         return 0;
     }
+
+    if (inputType == FILE_INPUT) {
+        printf("Уравнение (%lg)*x^2 + (%lg)*x + (%lg) = 0\n", coef.a, coef.b, coef.c);
+    }
+
     while (status == INCORRECT_INPUT) {
         printf("Неправильный формат, укажите 3 числа через пробел:\n");
         if ((status = getCoefs(&(coef.a), &(coef.b), &(coef.c))) == EOF) {
