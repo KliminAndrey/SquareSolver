@@ -1,0 +1,17 @@
+.vscode
+settings.json
+tasks.json
+
+cmp.sh
+
+input.o
+main.o
+solve.o
+test.o
+tools.o
+
+a
+t
+program
+main
+hello
