@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SquareSolver: Файл solve.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">SquareSolver
+   </div>
+   <div id="projectbrief">Решение квадратных уравнений</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle"><div class="title">Файл solve.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;assert.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="solve_8h_source.html">solve.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tools_8h_source.html">tools.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для solve.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="solve_8cpp__incl.png" border="0" usemap="#asolve_8cpp" alt=""/></div>
+<map name="asolve_8cpp" id="asolve_8cpp">
+<area shape="rect" title=" " alt="" coords="175,5,252,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,67,104"/>
+<area shape="poly" title=" " alt="" coords="186,33,78,76,76,71,184,28"/>
+<area shape="rect" title=" " alt="" coords="91,79,154,104"/>
+<area shape="poly" title=" " alt="" coords="200,33,150,72,147,68,197,29"/>
+<area shape="rect" title=" " alt="" coords="179,79,248,104"/>
+<area shape="poly" title=" " alt="" coords="216,31,216,65,211,65,211,31"/>
+<area shape="rect" href="solve_8h.html" title=" " alt="" coords="273,79,335,104"/>
+<area shape="poly" title=" " alt="" coords="230,29,280,68,277,72,226,33"/>
+<area shape="rect" href="tools_8h.html" title=" " alt="" coords="360,79,421,104"/>
+<area shape="poly" title=" " alt="" coords="243,28,350,71,348,76,241,33"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a04a5dc8d71a595477617326366540073" id="r_a04a5dc8d71a595477617326366540073"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solve_8cpp.html#a04a5dc8d71a595477617326366540073">solve</a> (const <a class="el" href="structeqCoef.html">eqCoef</a> *const coef, <a class="el" href="structeqRoots.html">eqRoots</a> *const roots)</td></tr>
+<tr class="separator:a04a5dc8d71a595477617326366540073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a id="a04a5dc8d71a595477617326366540073" name="a04a5dc8d71a595477617326366540073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a5dc8d71a595477617326366540073">&#9670;&#160;</a></span>solve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void solve </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structeqCoef.html">eqCoef</a> *const&#160;</td>
+          <td class="paramname"><em>coef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeqRoots.html">eqRoots</a> *const&#160;</td>
+          <td class="paramname"><em>roots</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section examples"><dt>Примеры</dt><dd><a class="el" href="_2home_2klimin-andrey_2prd_2SquareSolver_2solve_8h-example.html#a2">/home/klimin-andrey/prd/SquareSolver/solve.h</a>.</dd>
+</dl>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="solve_8cpp_a04a5dc8d71a595477617326366540073_cgraph.png" border="0" usemap="#asolve_8cpp_a04a5dc8d71a595477617326366540073_cgraph" alt=""/></div>
+<map name="asolve_8cpp_a04a5dc8d71a595477617326366540073_cgraph" id="asolve_8cpp_a04a5dc8d71a595477617326366540073_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,57,31"/>
+<area shape="rect" href="tools_8cpp.html#a5b77e39ad2b1a8f2aecc8528b8a81a02" title="Сравнивает неточные числа" alt="" coords="105,5,225,31"/>
+<area shape="poly" title=" " alt="" coords="57,15,92,15,92,21,57,21"/>
+</map>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="solve_8cpp_a04a5dc8d71a595477617326366540073_icgraph.png" border="0" usemap="#asolve_8cpp_a04a5dc8d71a595477617326366540073_icgraph" alt=""/></div>
+<map name="asolve_8cpp_a04a5dc8d71a595477617326366540073_icgraph" id="asolve_8cpp_a04a5dc8d71a595477617326366540073_icgraph">
+<area shape="rect" title=" " alt="" coords="320,5,372,31"/>
+<area shape="rect" href="test_8cpp.html#a68e030561f897d8d506efaa98c428ec1" title=" " alt="" coords="196,5,272,31"/>
+<area shape="poly" title=" " alt="" coords="306,21,272,21,272,15,306,15"/>
+<area shape="rect" href="test_8cpp.html#ac8da963855e09bf929c085486f4a3b47" title=" " alt="" coords="104,5,148,31"/>
+<area shape="poly" title=" " alt="" coords="182,21,148,21,148,15,182,15"/>
+<area shape="rect" href="test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" title=" " alt="" coords="90,21,56,21,56,15,90,15"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SquareSolver: Исходный файл solve.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">SquareSolver
+   </div>
+   <div id="projectbrief">Решение квадратных уравнений</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">solve.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="solve_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SOLVE</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SOLVE</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="solve_8h.html#af512ff63df3fd7c638a0385144028c57">    4</a></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="solve_8h.html#af512ff63df3fd7c638a0385144028c57">INF_SOLVES</a> = -1;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structeqCoef.html">   11</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structeqCoef.html">eqCoef</a>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structeqCoef.html#aa4f59a9723c75b4fedc77e25b8b0afd5">   12</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structeqCoef.html#aa4f59a9723c75b4fedc77e25b8b0afd5">a</a>, <a class="code hl_variable" href="structeqCoef.html#a50a3b78c621195770bef6692a0c21728">b</a>, <a class="code hl_variable" href="structeqCoef.html#a24754ecdb4cbcfe44fdda84555bd7e7a">c</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>};</div>
+</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structeqRoots.html">   20</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structeqRoots.html">eqRoots</a>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structeqRoots.html#a6405ddfc0123b7337ddcaec700aca2b2">   21</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structeqRoots.html#a6405ddfc0123b7337ddcaec700aca2b2">nRoots</a>; </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structeqRoots.html#a09b7efc6e28615cd4d0e324b6beb4929">   22</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structeqRoots.html#a09b7efc6e28615cd4d0e324b6beb4929">root1</a>; </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structeqRoots.html#ab3f67701d7594e1d5a12d61b61001b72">   23</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structeqRoots.html#ab3f67701d7594e1d5a12d61b61001b72">root2</a>; </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">void</span> <a class="code hl_function" href="solve_8h.html#a04a5dc8d71a595477617326366540073">solve</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structeqCoef.html">eqCoef</a>* <span class="keyword">const</span> coef,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <a class="code hl_struct" href="structeqRoots.html">eqRoots</a>* <span class="keyword">const</span> roots);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="asolve_8h_html_a04a5dc8d71a595477617326366540073"><div class="ttname"><a href="solve_8h.html#a04a5dc8d71a595477617326366540073">solve</a></div><div class="ttdeci">void solve(const eqCoef *const coef, eqRoots *const roots)</div><div class="ttdef"><b>Definition</b> solve.cpp:13</div></div>
+<div class="ttc" id="asolve_8h_html_af512ff63df3fd7c638a0385144028c57"><div class="ttname"><a href="solve_8h.html#af512ff63df3fd7c638a0385144028c57">INF_SOLVES</a></div><div class="ttdeci">const int INF_SOLVES</div><div class="ttdef"><b>Definition</b> solve.h:4</div></div>
+<div class="ttc" id="astructeqCoef_html"><div class="ttname"><a href="structeqCoef.html">eqCoef</a></div><div class="ttdoc">Набор коэффициентов полинома a*x^2 + bx + c.</div><div class="ttdef"><b>Definition</b> solve.h:11</div></div>
+<div class="ttc" id="astructeqCoef_html_a24754ecdb4cbcfe44fdda84555bd7e7a"><div class="ttname"><a href="structeqCoef.html#a24754ecdb4cbcfe44fdda84555bd7e7a">eqCoef::c</a></div><div class="ttdeci">double c</div><div class="ttdef"><b>Definition</b> solve.h:12</div></div>
+<div class="ttc" id="astructeqCoef_html_a50a3b78c621195770bef6692a0c21728"><div class="ttname"><a href="structeqCoef.html#a50a3b78c621195770bef6692a0c21728">eqCoef::b</a></div><div class="ttdeci">double b</div><div class="ttdef"><b>Definition</b> solve.h:12</div></div>
+<div class="ttc" id="astructeqCoef_html_aa4f59a9723c75b4fedc77e25b8b0afd5"><div class="ttname"><a href="structeqCoef.html#aa4f59a9723c75b4fedc77e25b8b0afd5">eqCoef::a</a></div><div class="ttdeci">double a</div><div class="ttdef"><b>Definition</b> solve.h:12</div></div>
+<div class="ttc" id="astructeqRoots_html"><div class="ttname"><a href="structeqRoots.html">eqRoots</a></div><div class="ttdoc">Два или менее корня и их количество</div><div class="ttdef"><b>Definition</b> solve.h:20</div></div>
+<div class="ttc" id="astructeqRoots_html_a09b7efc6e28615cd4d0e324b6beb4929"><div class="ttname"><a href="structeqRoots.html#a09b7efc6e28615cd4d0e324b6beb4929">eqRoots::root1</a></div><div class="ttdeci">double root1</div><div class="ttdoc">Первый корень, когда nRoots &gt; 0.</div><div class="ttdef"><b>Definition</b> solve.h:22</div></div>
+<div class="ttc" id="astructeqRoots_html_a6405ddfc0123b7337ddcaec700aca2b2"><div class="ttname"><a href="structeqRoots.html#a6405ddfc0123b7337ddcaec700aca2b2">eqRoots::nRoots</a></div><div class="ttdeci">int nRoots</div><div class="ttdoc">Количество корней</div><div class="ttdef"><b>Definition</b> solve.h:21</div></div>
+<div class="ttc" id="astructeqRoots_html_ab3f67701d7594e1d5a12d61b61001b72"><div class="ttname"><a href="structeqRoots.html#ab3f67701d7594e1d5a12d61b61001b72">eqRoots::root2</a></div><div class="ttdeci">double root2</div><div class="ttdoc">Второй корень, когда nRoots = 2.</div><div class="ttdef"><b>Definition</b> solve.h:23</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

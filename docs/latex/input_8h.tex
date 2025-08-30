@@ -1,0 +1,63 @@
+\doxysection{Файл input.\+h}
+\hypertarget{input_8h}{}\label{input_8h}\index{input.h@{input.h}}
+Граф файлов, в которые включается этот файл\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{input_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{input_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status}} \{ \mbox{\hyperlink{input_8h_a015eb90e0de9f16e87bd149d4b9ce959aa0813ae740a896d6bd0ef36f7fe3dba3}{INCORRECT\+\_\+\+INPUT}} = -\/1
+, \mbox{\hyperlink{input_8h_a015eb90e0de9f16e87bd149d4b9ce959a49959dd441dcda75d6898cf2c68fb374}{CONTINUE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{input_8h_a94e33a3dbbce7c9ee86c5b421fb78682}{read\+Num}} (double \texorpdfstring{$\ast$}{*}const num)
+\begin{DoxyCompactList}\small\item\em Считывает число \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Перечисления}
+\Hypertarget{input_8h_a015eb90e0de9f16e87bd149d4b9ce959}\label{input_8h_a015eb90e0de9f16e87bd149d4b9ce959} 
+\index{input.h@{input.h}!status@{status}}
+\index{status@{status}!input.h@{input.h}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{input_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status}}}
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INCORRECT\_INPUT@{INCORRECT\_INPUT}!input.h@{input.h}}\index{input.h@{input.h}!INCORRECT\_INPUT@{INCORRECT\_INPUT}}}\Hypertarget{input_8h_a015eb90e0de9f16e87bd149d4b9ce959aa0813ae740a896d6bd0ef36f7fe3dba3}\label{input_8h_a015eb90e0de9f16e87bd149d4b9ce959aa0813ae740a896d6bd0ef36f7fe3dba3} 
+INCORRECT\+\_\+\+INPUT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTINUE@{CONTINUE}!input.h@{input.h}}\index{input.h@{input.h}!CONTINUE@{CONTINUE}}}\Hypertarget{input_8h_a015eb90e0de9f16e87bd149d4b9ce959a49959dd441dcda75d6898cf2c68fb374}\label{input_8h_a015eb90e0de9f16e87bd149d4b9ce959a49959dd441dcda75d6898cf2c68fb374} 
+CONTINUE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Функции}
+\Hypertarget{input_8h_a94e33a3dbbce7c9ee86c5b421fb78682}\label{input_8h_a94e33a3dbbce7c9ee86c5b421fb78682} 
+\index{input.h@{input.h}!readNum@{readNum}}
+\index{readNum@{readNum}!input.h@{input.h}}
+\doxysubsubsection{\texorpdfstring{readNum()}{readNum()}}
+{\footnotesize\ttfamily int read\+Num (\begin{DoxyParamCaption}\item[{double \texorpdfstring{$\ast$}{*}const}]{num }\end{DoxyParamCaption})}
+
+
+
+Считывает число 
+
+Принимает из потока ввода целое число
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ out}}  & {\em num} & указатель, по которому будет записано число\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+0, если ввод успешен, или INCORRECT\+\_\+\+INPUT, если число считать не удалось 
+\end{DoxyReturn}

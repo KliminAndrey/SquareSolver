@@ -29,6 +29,7 @@ int testSolve(const eqData* const data) {
     }
     return 1;
 }
+
 int test() {
     eqData testList[] = {{.coef = {.a = 1, .b = -5, .c = 6},
                         .roots = {.nRoots = 2, .root1 = 2, .root2 = 3}},
@@ -43,6 +44,7 @@ int test() {
     }
     return countSuccess;
 }
+
 int main() {
     printf("Запуск тестирования\n");
     int testSuccess = test();

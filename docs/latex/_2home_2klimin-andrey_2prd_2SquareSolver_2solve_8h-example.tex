@@ -1,0 +1,48 @@
+\doxysection{/home/klimin-\/andrey/prd/\+Square\+Solver/solve.\+h}
+\hypertarget{_2home_2klimin-andrey_2prd_2SquareSolver_2solve_8h-example}{}\label{_2home_2klimin-andrey_2prd_2SquareSolver_2solve_8h-example}Получает корни уравнения
+
+Получает корни уравнения По полученным коэффициентам квадратного уравнения вычисляет количество корней и их значения
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em coef} & указатель на коэффициенты уравнения \\
+\hline
+\mbox{\texttt{ out}}  & {\em roots} & указатель, по которому будут записаны корни\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structeqCoef}{eqCoef}}\ coefficients\ =\ \{1.0,\ -\/3.0,\ 2.0\};\ \textcolor{comment}{//\ x\string^2\ -\/\ 3x\ +\ 2\ =\ 0}}
+\DoxyCodeLine{\mbox{\hyperlink{structeqRoots}{eqRoots}}\ solutions;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{solve_8cpp_a04a5dc8d71a595477617326366540073}{solve}}(\&coefficients,\ \&solutions);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ solutions.nRoots\ будет\ равно\ 2}}
+\DoxyCodeLine{\textcolor{comment}{//\ solutions.root1\ =\ 1.0,\ solutions.root2\ =\ 2.0}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef\ SOLVE}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ SOLVE}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{solve_8h_af512ff63df3fd7c638a0385144028c57}{INF\_SOLVES}}\ =\ -\/1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\mbox{\hyperlink{structeqCoef}{eqCoef}}\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structeqCoef_aa4f59a9723c75b4fedc77e25b8b0afd5}{a}},\ \mbox{\hyperlink{structeqCoef_a50a3b78c621195770bef6692a0c21728}{b}},\ \mbox{\hyperlink{structeqCoef_a24754ecdb4cbcfe44fdda84555bd7e7a}{c}};}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\mbox{\hyperlink{structeqRoots}{eqRoots}}\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structeqRoots_a6405ddfc0123b7337ddcaec700aca2b2}{nRoots}};\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structeqRoots_a09b7efc6e28615cd4d0e324b6beb4929}{root1}};\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structeqRoots_ab3f67701d7594e1d5a12d61b61001b72}{root2}};\ }
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{solve_8cpp_a04a5dc8d71a595477617326366540073}{solve}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structeqCoef}{eqCoef}}*\ \textcolor{keyword}{const}\ coef,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structeqRoots}{eqRoots}}*\ \textcolor{keyword}{const}\ roots);}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCodeInclude}
+ 

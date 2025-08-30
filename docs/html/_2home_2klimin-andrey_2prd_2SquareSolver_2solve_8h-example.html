@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SquareSolver: /home/klimin-andrey/prd/SquareSolver/solve.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">SquareSolver
+   </div>
+   <div id="projectbrief">Решение квадратных уравнений</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">/home/klimin-andrey/prd/SquareSolver/solve.h</div></div>
+</div><!--header-->
+<div class="contents">
+<p>Получает корни уравнения</p>
+<p>Получает корни уравнения По полученным коэффициентам квадратного уравнения вычисляет количество корней и их значения</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">coef</td><td>указатель на коэффициенты уравнения </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">roots</td><td>указатель, по которому будут записаны корни</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a id="_a0" name="_a0"></a><a class="code hl_struct" href="structeqCoef.html">eqCoef</a> coefficients = {1.0, -3.0, 2.0}; <span class="comment">// x^2 - 3x + 2 = 0</span></div>
+<div class="line"><a id="_a1" name="_a1"></a><a class="code hl_struct" href="structeqRoots.html">eqRoots</a> solutions;</div>
+<div class="line"> </div>
+<div class="line"><a id="a2" name="a2"></a><a class="code hl_function" href="solve_8cpp.html#a04a5dc8d71a595477617326366540073">solve</a>(&amp;coefficients, &amp;solutions);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// solutions.nRoots будет равно 2</span></div>
+<div class="line"><span class="comment">// solutions.root1 = 1.0, solutions.root2 = 2.0</span></div>
+<div class="ttc" id="asolve_8cpp_html_a04a5dc8d71a595477617326366540073"><div class="ttname"><a href="solve_8cpp.html#a04a5dc8d71a595477617326366540073">solve</a></div><div class="ttdeci">void solve(const eqCoef *const coef, eqRoots *const roots)</div><div class="ttdef"><b>Definition</b> solve.cpp:13</div></div>
+<div class="ttc" id="astructeqCoef_html"><div class="ttname"><a href="structeqCoef.html">eqCoef</a></div><div class="ttdoc">Набор коэффициентов полинома a*x^2 + bx + c.</div><div class="ttdef"><b>Definition</b> solve.h:11</div></div>
+<div class="ttc" id="astructeqRoots_html"><div class="ttname"><a href="structeqRoots.html">eqRoots</a></div><div class="ttdoc">Два или менее корня и их количество</div><div class="ttdef"><b>Definition</b> solve.h:20</div></div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="preprocessor">#ifndef SOLVE</span></div>
+<div class="line"><span class="preprocessor">#define SOLVE</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="solve_8h.html#af512ff63df3fd7c638a0385144028c57">INF_SOLVES</a> = -1;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structeqCoef.html">eqCoef</a>{</div>
+<div class="line">    <span class="keywordtype">double</span> <a id="a1" name="a1"></a><a class="code hl_variable" href="structeqCoef.html#aa4f59a9723c75b4fedc77e25b8b0afd5">a</a>, <a id="a2" name="a2"></a><a class="code hl_variable" href="structeqCoef.html#a50a3b78c621195770bef6692a0c21728">b</a>, <a id="a3" name="a3"></a><a class="code hl_variable" href="structeqCoef.html#a24754ecdb4cbcfe44fdda84555bd7e7a">c</a>;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structeqRoots.html">eqRoots</a>{</div>
+<div class="line">    <span class="keywordtype">int</span> <a id="a4" name="a4"></a><a class="code hl_variable" href="structeqRoots.html#a6405ddfc0123b7337ddcaec700aca2b2">nRoots</a>; </div>
+<div class="line">    <span class="keywordtype">double</span> <a id="a5" name="a5"></a><a class="code hl_variable" href="structeqRoots.html#a09b7efc6e28615cd4d0e324b6beb4929">root1</a>; </div>
+<div class="line">    <span class="keywordtype">double</span> <a id="a6" name="a6"></a><a class="code hl_variable" href="structeqRoots.html#ab3f67701d7594e1d5a12d61b61001b72">root2</a>; </div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="solve_8cpp.html#a04a5dc8d71a595477617326366540073">solve</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structeqCoef.html">eqCoef</a>* <span class="keyword">const</span> coef,</div>
+<div class="line">                <a class="code hl_struct" href="structeqRoots.html">eqRoots</a>* <span class="keyword">const</span> roots);</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="asolve_8h_html_af512ff63df3fd7c638a0385144028c57"><div class="ttname"><a href="solve_8h.html#af512ff63df3fd7c638a0385144028c57">INF_SOLVES</a></div><div class="ttdeci">const int INF_SOLVES</div><div class="ttdef"><b>Definition</b> solve.h:4</div></div>
+<div class="ttc" id="astructeqCoef_html_a24754ecdb4cbcfe44fdda84555bd7e7a"><div class="ttname"><a href="structeqCoef.html#a24754ecdb4cbcfe44fdda84555bd7e7a">eqCoef::c</a></div><div class="ttdeci">double c</div><div class="ttdef"><b>Definition</b> solve.h:12</div></div>
+<div class="ttc" id="astructeqCoef_html_a50a3b78c621195770bef6692a0c21728"><div class="ttname"><a href="structeqCoef.html#a50a3b78c621195770bef6692a0c21728">eqCoef::b</a></div><div class="ttdeci">double b</div><div class="ttdef"><b>Definition</b> solve.h:12</div></div>
+<div class="ttc" id="astructeqCoef_html_aa4f59a9723c75b4fedc77e25b8b0afd5"><div class="ttname"><a href="structeqCoef.html#aa4f59a9723c75b4fedc77e25b8b0afd5">eqCoef::a</a></div><div class="ttdeci">double a</div><div class="ttdef"><b>Definition</b> solve.h:12</div></div>
+<div class="ttc" id="astructeqRoots_html_a09b7efc6e28615cd4d0e324b6beb4929"><div class="ttname"><a href="structeqRoots.html#a09b7efc6e28615cd4d0e324b6beb4929">eqRoots::root1</a></div><div class="ttdeci">double root1</div><div class="ttdoc">Первый корень, когда nRoots &gt; 0.</div><div class="ttdef"><b>Definition</b> solve.h:22</div></div>
+<div class="ttc" id="astructeqRoots_html_a6405ddfc0123b7337ddcaec700aca2b2"><div class="ttname"><a href="structeqRoots.html#a6405ddfc0123b7337ddcaec700aca2b2">eqRoots::nRoots</a></div><div class="ttdeci">int nRoots</div><div class="ttdoc">Количество корней</div><div class="ttdef"><b>Definition</b> solve.h:21</div></div>
+<div class="ttc" id="astructeqRoots_html_ab3f67701d7594e1d5a12d61b61001b72"><div class="ttname"><a href="structeqRoots.html#ab3f67701d7594e1d5a12d61b61001b72">eqRoots::root2</a></div><div class="ttdeci">double root2</div><div class="ttdoc">Второй корень, когда nRoots = 2.</div><div class="ttdef"><b>Definition</b> solve.h:23</div></div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -20,6 +20,7 @@ enum input {
 int main(int argc, char* argv[]) {
     int nEq = 1000;
     int inputType = KEYBOARD_INPUT;
+
     if (argc >= 3 && strcmp(argv[1], "--file") == 0) {
         const char* fileName = argv[2];
         FILE* ptrFile = fopen(fileName, "r");
@@ -31,6 +32,7 @@ int main(int argc, char* argv[]) {
             inputType = FILE_INPUT;
         }
     }
+
     int status = CONTINUE;
     for (int i = 0; i < nEq && status == CONTINUE; i++) {
         status = execute(inputType);

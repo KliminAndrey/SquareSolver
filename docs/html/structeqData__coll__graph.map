@@ -1,0 +1,7 @@
+<map id="eqData" name="eqData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="51,93,114,119"/>
+<area shape="rect" id="Node000002" href="$structeqCoef.html" title="Набор коэффициентов полинома a*x^2 + bx + c." alt="" coords="5,5,69,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,42,79,92,74,94,48,44"/>
+<area shape="rect" id="Node000003" href="$structeqRoots.html" title="Два или менее корня и их количество" alt="" coords="94,5,165,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,44,91,94,87,92,114,41"/>
+</map>
